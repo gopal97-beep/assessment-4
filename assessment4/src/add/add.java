@@ -57,7 +57,7 @@ public class add extends HttpServlet {
 			ads.add(ad1);		
 			}
 		request.setAttribute("ad", ads);
-		request.getRequestDispatcher("form.jsp").forward(request, response);
+		//request.getRequestDispatcher("form.jsp").forward(request, response);
 		
 		
 	}
@@ -71,8 +71,9 @@ public class add extends HttpServlet {
 		MongoClient mongoClient = MongoClients.create("mongodb://localhost:27017");
 		MongoDatabase database = mongoClient.getDatabase("date");
 		MongoCollection<Document> collection = database.getCollection("ad");
-		String id1=request.getParameter("lol");
+		//String id1=request.getParameter("lol");
 		HttpSession session = request.getSession();
+		String id1=(String) session.getAttribute("id");
 		if(request.getParameter("title")!=null) {
 		String title=request.getParameter("title");
 		String city=request.getParameter("city");
